@@ -1,0 +1,16 @@
+package com.githubrepositoriesapi.github_repositories_api.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class RepositoryDto {
+    private String name;
+    private String ownerLogin;
+    private List<BranchDto> branches;
+}
