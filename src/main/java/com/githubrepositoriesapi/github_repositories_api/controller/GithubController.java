@@ -29,4 +29,3 @@ public class GithubController {
                 .body(new ErrorResponse(404, ex.getMessage()));
     }
 }
-

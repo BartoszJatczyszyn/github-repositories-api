@@ -14,4 +14,3 @@ public class RepositoryDto {
     private String ownerLogin;
     private List<BranchDto> branches;
 }
-

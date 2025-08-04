@@ -16,26 +16,26 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GithubApiIntegrationTest {
 
-	@Autowired
-	private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
-	@Test
-	void shouldReturnRepositoriesForExistingUser() {
-		ResponseEntity<RepositoryDto[]> response =
-				restTemplate.getForEntity("/repositories/BartoszJatczyszyn", RepositoryDto[].class);
+    @Test
+    void shouldReturnRepositoriesForExistingUser() {
+        ResponseEntity<RepositoryDto[]> response =
+                restTemplate.getForEntity("/repositories/BartoszJatczyszyn", RepositoryDto[].class);
 
-		assertEquals(HttpStatus.OK, response.getStatusCode());
-		assertNotNull(response.getBody());
-		assertTrue(response.getBody().length > 0);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertTrue(response.getBody().length > 0);
 
-		for (RepositoryDto repo : response.getBody()) {
-			assertNotNull(repo.getName());
-			assertNotNull(repo.getOwnerLogin());
-			assertNotNull(repo.getBranches());
-			for (BranchDto branch : repo.getBranches()) {
-				assertNotNull(branch.getName());
-				assertNotNull(branch.getLastCommitSha());
-			}
-		}
-	}
+        for (RepositoryDto repo : response.getBody()) {
+            assertNotNull(repo.getName());
+            assertNotNull(repo.getOwnerLogin());
+            assertNotNull(repo.getBranches());
+            for (BranchDto branch : repo.getBranches()) {
+                assertNotNull(branch.getName());
+                assertNotNull(branch.getLastCommitSha());
+            }
+        }
+    }
 }
